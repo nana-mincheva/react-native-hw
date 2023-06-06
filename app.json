@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "rn-social",
-    "slug": "rn-social",
+    "name": "react-native-hw",
+    "slug": "react-native-hw",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
