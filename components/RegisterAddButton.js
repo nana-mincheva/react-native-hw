@@ -1,7 +1,6 @@
 import React from "react";
 import { Svg, Path, Circle } from "react-native-svg";
-import { TouchableOpacity } from "react-native";
-import { StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 
 const RegisterAddButton = ({ onPress }) => {
     return (

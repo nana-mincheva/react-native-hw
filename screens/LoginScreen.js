@@ -83,7 +83,7 @@ const LoginScreen = () => {
 };
 
 const styles = StyleSheet.create({
-     loginContainer: {
+    loginContainer: {
         width: "100%",
         height: "60%",
         marginTop: "auto",
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: "#FF6C00",
     },
-})
+});
 
 export default LoginScreen;

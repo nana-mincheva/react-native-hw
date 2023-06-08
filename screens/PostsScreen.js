@@ -18,8 +18,9 @@ const PostsScreen = () => {
         </View>
     );
 };
+
 const styles = StyleSheet.create({
-     postsContainer: {
+    postsContainer: {
         width: "100%",
         height: "100%",
         backgroundColor: "#ffffff",
@@ -39,11 +40,12 @@ const styles = StyleSheet.create({
         borderColor: "#E8E8E8",
         borderBottomWidth: 1,
     },
-     postsHeader: {
+    postsHeader: {
         marginLeft: "auto",
         marginRight: "auto",
         fontWeight: 500,
         fontSize: 17,
     },
- })
+});
+ 
 export default PostsScreen;

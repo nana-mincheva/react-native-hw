@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 
 const RegisterRemoveButton = ({ onPress }) => {
     return (
-        <TouchableOpacity style={styles.removeImageButton} onPress={onPress}>
+        <TouchableOpacity style={styles.removeButton} onPress={onPress}>
             <Svg
                 width="37"
                 height="37"
@@ -33,7 +33,7 @@ const RegisterRemoveButton = ({ onPress }) => {
 };
 
 const styles = StyleSheet.create({
-     removeImageButton: {
+     removeButton: {
         position: "absolute",
         bottom: 10,
         right: -18 ,

@@ -54,9 +54,7 @@ const RegistrationScreen = () => {
                     ></RegisterRemoveButton>
                 )}
             </View>
-
             <Text style={styles.registrationFormHeader}>Реєстрація</Text>
-
             <View style={styles.registrationForm}>
                 <InputComponent
                     placeholder={"Логін"}
@@ -72,7 +70,6 @@ const RegistrationScreen = () => {
                     value={email}
                     onChangeText={setEmail}
                 />
-
                 <View style={{ position: "relative" }}>
                     <InputComponent
                         placeholder={"Пароль"}
@@ -96,7 +93,6 @@ const RegistrationScreen = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-
             <TouchableOpacity
                 onPress={handleSubmitButtonPress}
                 style={styles.registrationFormSubmitButton}
@@ -128,7 +124,7 @@ const RegistrationScreen = () => {
 };
 
 const styles = StyleSheet.create({
-     registrationContainer: {
+    registrationContainer: {
         width: "100%",
         height: "70%",
         marginTop: "auto",
@@ -171,5 +167,6 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: "#FF6C00",
     },
-})
+});
+
 export default RegistrationScreen;
