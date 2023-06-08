@@ -1,26 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import { useFonts } from "expo-font";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import LoginScreen from "./screens/LoginScreen";
+import PostsScreen from "./screens/PostsScreen";
+
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+  });
+  if (!fontsLoaded) {
+        return null;
+    }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-      <Image source={require('./assets/584999ba7b7d4d76317f6001.png')}/>
-      <StatusBar style="auto" />
+      <Image
+        source={require('./assets/images/background_img.jpg')}
+        resizeMode="cover"
+         style={styles.image}
+      />
+      <RegistrationScreen />
+      {/* <LoginScreen /> */}
+      {/* <PostsScreen /> */}
     </View>
   );
-}
+};
+
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     flex: 1,
     backgroundColor: '#2f4f4f',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  text: {
-    color: '#8b0000',
-    fontWeight: 'bold',
-    fontSize: 30,
-  }
+   image: {
+        position: "absolute",
+        width: "100%",
+        flex: 1,
+        justifyContent: "center",
+    },
 });
