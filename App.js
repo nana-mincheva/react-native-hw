@@ -5,7 +5,6 @@ import RegistrationScreen from "./screens/RegistrationScreen";
 import LoginScreen from "./screens/LoginScreen";
 import PostsScreen from "./screens/PostsScreen";
 
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
@@ -23,8 +22,8 @@ export default function App() {
         resizeMode="cover"
          style={styles.image}
       />
-      <RegistrationScreen />
-      {/* <LoginScreen /> */}
+      {/* <RegistrationScreen /> */}
+      <LoginScreen />
       {/* <PostsScreen /> */}
        <StatusBar style="auto" />
     </View>

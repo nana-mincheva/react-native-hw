@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, Text, TouchableOpacity, StyleSheet} from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet,  KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback,} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import RegisterAddButton from "../components/RegisterAddButton";
 import RegisterRemoveButton from "../components/RegisterRemoveButton";
@@ -21,7 +21,7 @@ const RegistrationScreen = () => {
     };
 
     const handleSubmitButtonPress = () => {
-        console.log(login, email, password);
+        console.log({ login, email, password });
     };
 
     const uploadAvatar = async () => {
@@ -36,7 +36,8 @@ const RegistrationScreen = () => {
         if (!result.canceled) setUserAavatar(result.assets[0].uri);
     };
     return (
-        <View style={styles.registrationContainer}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.registerContainer}>
             <View style={styles.userImageContainer}>
                 {userAvatar && (
                     <Image
@@ -54,8 +55,11 @@ const RegistrationScreen = () => {
                     ></RegisterRemoveButton>
                 )}
             </View>
-            <Text style={styles.registrationFormHeader}>Реєстрація</Text>
-            <View style={styles.registrationForm}>
+                <Text style={styles.registerFormHeader}>Реєстрація</Text>
+                <KeyboardAvoidingView
+                    behavior={Platform.OS == "android" ? "padding" : "height"}
+                >
+            <View style={styles.registerForm}>
                 <InputComponent
                     placeholder={"Логін"}
                     type={"text"}
@@ -92,10 +96,11 @@ const RegistrationScreen = () => {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+                    </View>
+                    </KeyboardAvoidingView>
             <TouchableOpacity
                 onPress={handleSubmitButtonPress}
-                style={styles.registrationFormSubmitButton}
+                style={styles.registerFormSubmitButton}
                 title="Зареєструватися"
             >
                 <Text
@@ -118,13 +123,14 @@ const RegistrationScreen = () => {
                 >
                     Вже є акаунт? Увійти
                 </Text>
-            </TouchableOpacity>
-        </View>
+                </TouchableOpacity>
+            </View>
+            </TouchableWithoutFeedback>
     );
 };
 
 const styles = StyleSheet.create({
-    registrationContainer: {
+    registerContainer: {
         width: "100%",
         height: "70%",
         marginTop: "auto",
@@ -144,12 +150,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#F6F6F6",
         borderRadius: 16,
     },
-    registrationForm: {
+    registerForm: {
         display: "flex",
         gap: 16,
         marginBottom: 40,
     },
-    registrationFormHeader: {
+    registerFormHeader: {
         margin: 0,
         padding: 0,
         marginBottom: 32,
@@ -159,7 +165,7 @@ const styles = StyleSheet.create({
         lineHeight: 35,
         textAlign: "center",
     },
-    registrationFormSubmitButton: {
+    registerFormSubmitButton: {
         width: "100%",
         height: 50,
         marginBottom: 16,

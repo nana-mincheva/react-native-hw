@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, StyleSheet } from "react-native";
 import InputComponent from "../components/InputComponent";
 
 const LoginScreen = () => {
@@ -12,13 +12,14 @@ const LoginScreen = () => {
     };
 
     const handleSubmitButtonPress = () => {
-        console.log(login, email, password);
+        console.log({ email, password });
     };
 
     return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.loginContainer}>
-            <Text style={styles.loginFormHeader}>Увійти</Text>
-
+                <Text style={styles.loginFormHeader}>Увійти</Text>
+            <KeyboardAvoidingView behavior={Platform.OS == "android" ? "padding" : "height"}>
             <View style={styles.loginForm}>
                 <InputComponent
                     placeholder={"Адреса електронної пошти"}
@@ -51,6 +52,7 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
             </View>
+        </KeyboardAvoidingView>
 
             <TouchableOpacity
                 onPress={handleSubmitButtonPress}
@@ -75,10 +77,11 @@ const LoginScreen = () => {
                         textAlign: "center",
                     }}
                 >
-                    Немає фкаунту? Зареєструватися
+                    Немає акаунту? Зареєструватися
                 </Text>
             </TouchableOpacity>
-        </View>
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
