@@ -13,6 +13,7 @@ const Tabs = createBottomTabNavigator();
 
 const Home = () => {
   const navigation = useNavigation();
+
   return (
     <Tabs.Navigator
       screenOptions={{
