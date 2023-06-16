@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import LogoutButton from "../components/LogoutButton";
 import AuthUserInfo from "../components/AuthUserInfo";
-import AppControls from "../components/AppControls";
 
 const PostsScreen = () => {
      const handleLogoutPress = () => {
@@ -9,12 +8,7 @@ const PostsScreen = () => {
     };
     return (
         <View style={styles.postsContainer}>
-            <View style={styles.postsHeaderContainer}>
-                <Text style={styles.postsHeader}>Публікації</Text>
-                <LogoutButton onPress={handleLogoutPress}></LogoutButton>
-            </View>
             <AuthUserInfo />
-            <AppControls />
         </View>
     );
 };

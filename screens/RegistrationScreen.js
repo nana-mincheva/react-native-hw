@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { View, Image, Text, TouchableOpacity, StyleSheet,  KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback,} from "react-native";
+import { View, Image, Text, TouchableOpacity, StyleSheet,  KeyboardAvoidingView, Platform, Keyboard, TouchableWithoutFeedback, ImageBackground} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import RegisterAddButton from "../components/RegisterAddButton";
 import RegisterRemoveButton from "../components/RegisterRemoveButton";
 import InputComponent from "../components/InputComponent";
+const backImage = require('../assets/images/background_img.jpg');
 
-const RegistrationScreen = () => {
+
+const RegistrationScreen = ({ navigation }) => {
     const [login, setLogin] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,10 +20,6 @@ const RegistrationScreen = () => {
 
     const handleRemoveImage = () => {
         setUserAavatar(null);
-    };
-
-    const handleSubmitButtonPress = () => {
-        console.log({ login, email, password });
     };
 
     const uploadAvatar = async () => {
@@ -37,6 +35,7 @@ const RegistrationScreen = () => {
     };
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <ImageBackground source={backImage} style={styles.backImg}>
         <View style={styles.registerContainer}>
             <View style={styles.userImageContainer}>
                 {userAvatar && (
@@ -99,7 +98,7 @@ const RegistrationScreen = () => {
                     </View>
                     </KeyboardAvoidingView>
             <TouchableOpacity
-                onPress={handleSubmitButtonPress}
+                onPress={() => navigation.navigate("Home")}
                 style={styles.registerFormSubmitButton}
                 title="Зареєструватися"
             >
@@ -113,18 +112,14 @@ const RegistrationScreen = () => {
                     Зареєструватися
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text
-                    style={{
-                        fontSize: 16,
-                        color: "#1B4371",
-                        textAlign: "center",
-                    }}
-                >
-                    Вже є акаунт? Увійти
-                </Text>
+             <View style={styles.toLoginWrapper} activeOpacity={0.7}>
+                <Text style={styles.textLink}>Вже є акаунт?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                  <Text style={styles.textLink}>Увійти</Text>
                 </TouchableOpacity>
-            </View>
+              </View>
+                </View>
+                </ImageBackground>
             </TouchableWithoutFeedback>
     );
 };
@@ -141,6 +136,11 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
         paddingRight: 16,
     },
+    backImg: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: '100%'
+  },
     userImageContainer: {
         marginLeft: "auto",
         marginRight: "auto",
@@ -173,6 +173,19 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: "#FF6C00",
     },
+     toLoginWrapper: {
+        display: "flex",
+        flexDirection: "row",
+        gap: 4,
+        justifyContent: 'center',
+  },
+    textLink: {
+       fontFamily: "Roboto",
+       fontWeight: 400,
+       fontSize: 16,
+       lineHeight: 19,
+       color: "#1B4371",
+  },
 });
 
 export default RegistrationScreen;
